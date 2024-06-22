@@ -1,0 +1,30 @@
+name: frrouting
+
+mgmt:
+  network: netlab_mgmt
+  ipv4-subnet: 192.168.121.0/24
+  # Note: 'start' not validated
+topology:
+  nodes:
+    rtr:
+      mgmt-ipv4: 192.168.121.101
+      kind: cvx
+      image: networkop/cx:4.4.0
+      runtime: docker
+      group: 
+      binds:
+      - clab_files/rtr/interfaces:/etc/network/interfaces
+    x1:
+      mgmt-ipv4: 192.168.121.102
+      kind: cvx
+      image: networkop/cx:4.4.0
+      runtime: docker
+      group: as65100
+      binds:
+      - clab_files/x1/interfaces:/etc/network/interfaces
+
+
+  links:
+  - endpoints:
+    - "rtr:swp1"
+    - "x1:swp1"
