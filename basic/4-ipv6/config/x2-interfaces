@@ -3,11 +3,11 @@ iface lo inet loopback
 
 auto lo
 iface lo inet loopback
-	address 192.168.100.1/24
+	address 192.168.101.1/24
 
 auto lo
 iface lo inet6 loopback
-	address 2001:db8:100:1::1/48
+	address 2001:db8:101:1::1/48
 
 auto mgmt
 iface mgmt
@@ -15,16 +15,18 @@ iface mgmt
 
 auto eth0
 iface eth0 inet static
-	address 192.168.121.110
+	address 192.168.121.111
 	vrf mgmt
 
 auto swp1
 iface swp1 inet static
-	address 10.1.0.2/30
+	mtu 1500
+	address 10.1.0.6/30
 
 auto swp1
 iface swp1 inet6 static
-	address 2001:db8:42::2/64
+	mtu 1500
+	address 2001:db8:42:1::2/64
 
 auto swp1
 iface swp1
